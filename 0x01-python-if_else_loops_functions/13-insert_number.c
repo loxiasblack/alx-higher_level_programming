@@ -1,6 +1,5 @@
 #include "lists.h"
 #include <stdlib.h>
-listint_t *add_nodeint_first(listint_t **head , const int n);
 /**
  * insert_node - function that insert node in  ascending order
  * @head: the head of the linked list
@@ -20,16 +19,19 @@ listint_t *insert_node(listint_t **head, int number)
 		return (NULL);
 	new->n = number;
 	new->next = NULL;
+	if (*head == NULL)
+	{
+		*head = new;
+		return (*head);
+	}
 	if (current->n > new->n)
 		*head = new, new->next = current;
-	if (*head == NULL)
-		*head = new;
 	else
 	{
 		tmp = NULL;
 		while (current->next != NULL)
 		{
-			if (current->n < new->n && current->next->n > new->n)
+			if (current->n < new->n && current->next->n >= new->n)
 			{
 				tmp = current->next;
 				current->next = new;
@@ -42,4 +44,3 @@ listint_t *insert_node(listint_t **head, int number)
 	}
 	return (*head);
 }
-
