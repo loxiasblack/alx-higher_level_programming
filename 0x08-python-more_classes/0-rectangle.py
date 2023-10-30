@@ -1,3 +1,4 @@
 #!/usr/bin/pyhton3
 class Rectangle:
-    pass
+    def __init__(self):
+        pass
