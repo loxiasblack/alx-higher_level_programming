@@ -13,5 +13,9 @@ class Square(Rectangle):
         size must be a positive integer, validated
         by integer_validator"""
         super().integer_validator("size", size)
-        Rectangle.__init__(self, size, size)
-        self.__size = self
+        super().__init__(size, size)
+        self.__size = size
+
+    def __str__(self):
+        """ should return, the square description"""
+        return "[Square] {}/{}".format(self.__size, self.__size)
