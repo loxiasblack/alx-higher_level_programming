@@ -1,5 +1,5 @@
 ==========================================
-        CASE TESTS FOR 7-base_geometry
+        CASE cd TESTS FOR 7-base_geometry
 ==========================================
 
 Import class from module:
