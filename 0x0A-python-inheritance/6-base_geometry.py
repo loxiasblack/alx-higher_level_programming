@@ -3,10 +3,7 @@
 
 
 class BaseGeometry:
-
-    def __init__(slef):
-        """init istance"""
-        pass
+    """an empty Base geometry"""
 
     def area(self):
         """raise an exepction with the
