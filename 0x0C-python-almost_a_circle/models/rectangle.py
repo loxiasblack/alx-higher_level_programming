@@ -101,3 +101,7 @@ class Rectangle(Base):
         """method that display rectangle with #"""
         for i in range(self.__height):
             print("#" * self.__width)
+
+    def __str__(self):
+        return (f"[Rectangle] ({self.id}) {self.__x}/{self.__y}"
+                f" - {self.__width}/{self.__height}")
