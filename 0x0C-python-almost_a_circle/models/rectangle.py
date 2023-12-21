@@ -107,3 +107,19 @@ class Rectangle(Base):
     def __str__(self):
         return (f"[Rectangle] ({self.id}) {self.__x}/{self.__y}"
                 f" - {self.__width}/{self.__height}")
+
+    def update(self, *args):
+        """function that update the attribute"""
+        counter = 0
+        for arg in args:
+            if counter == 0:
+                self.id = args[0]
+            if counter == 1:
+                self.__width = arg
+            if counter == 2:
+                self.__height = arg
+            if counter == 3:
+                self.__x = arg
+            if counter == 4:
+                self.__y = arg
+            counter += 1
