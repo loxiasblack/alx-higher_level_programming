@@ -135,3 +135,14 @@ class Rectangle(Base):
             if counter == 4:
                 self.__y = arg
             counter += 1
+
+    def to_dictionary(self):
+        """return a dictionnary to the attribute"""
+
+        return {
+                "id": self.id,
+                "width": self.width,
+                "height": self.height,
+                "x": self.x,
+                "y": self.y,
+                }
