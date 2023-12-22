@@ -17,7 +17,6 @@ class Square(Rectangle):
 
     @property
     def size(self):
-<<<<<<< HEAD
 
         return self.size
 
@@ -26,7 +25,7 @@ class Square(Rectangle):
 
         self.__width = value
         self.__height = value
-=======
+
         """retreive the size"""
         return self.height
 
@@ -62,4 +61,12 @@ class Square(Rectangle):
             if counter == 3:
                 self.y = arg
             counter += 1
->>>>>>> 09fe79ff10070d04a64fa0508d49d426766b683f
+
+    def to_dictionary(self):
+        """ method that return a dict of square attribute """
+        return {
+                "id": self.id,
+                "size": self.height,
+                "x": self.x,
+                "y": self.y
+                }
