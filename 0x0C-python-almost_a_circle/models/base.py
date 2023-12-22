@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """!.base class module"""
+import json
 
 
 class Base:
@@ -13,3 +14,11 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """static method that return representation of my list_dictionary"""
+        if list_dictionaries is None:
+            return json.dumps([])
+        else:
+            return json.dumps(list_dictionaries)
