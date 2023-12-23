@@ -27,7 +27,7 @@ class Base:
     def from_json_string(json_string):
         """ return json string to dictionaries"""
         if json_string is None:
-            return json.loads([])
+            return json.loads(json_string)
         return json.loads(json_string)
 
     @classmethod
