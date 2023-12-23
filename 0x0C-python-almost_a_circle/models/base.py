@@ -6,7 +6,6 @@ import json
 class Base:
     """class for the object"""
     __nb_objects = 0
-    list_objs = []
 
     def __init__(self, id=None):
         """instantiation with id"""
@@ -29,7 +28,7 @@ class Base:
         """class method that write Json string of my list_objt"""
         filename = cls.__name__ + ".json"
         if list_objs is None:
-            list_obj = []
+            list_objs = []
         jsonstr = cls.to_json_string([inst.to_dictionary()
                                       for inst in list_objs])
         with open(filename, "w") as f:
