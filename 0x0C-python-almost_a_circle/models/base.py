@@ -40,3 +40,20 @@ class Base:
                                       for inst in list_objs])
         with open(filename, "w") as f:
             f.write(jsonstr)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """creat a dummy instance"""
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+            Base.just_dummy()
+        if cls.__name__ == "square":
+            dummy = cls(1)
+            Base.just_dummy()
+        dummy.update(dictionary)
+        return dummy
+
+    @classmethod
+    def just_dummy(cls):
+        """ignore the count"""
+        Base.__nb_objects -= 1
