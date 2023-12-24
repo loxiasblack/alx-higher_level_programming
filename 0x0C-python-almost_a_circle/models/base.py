@@ -50,7 +50,7 @@ class Base:
         if cls.__name__ == "square":
             dummy = cls(1)
             Base.just_dummy()
-        dummy.update(dictionary)
+        dummy.update(**dictionary)
         return dummy
 
     @classmethod
