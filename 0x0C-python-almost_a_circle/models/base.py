@@ -57,3 +57,14 @@ class Base:
     def just_dummy(cls):
         """ignore the count"""
         Base.__nb_objects -= 1
+
+    @classmethod
+    def load_from_file(cls):
+        if cls.__name__ == "Rectangle":
+            with open("Rectangle.json", "r") as f:
+                list_data = json.load(f)
+            return list_data
+        if cls.__name__ == "Square":
+            with open("Square.json", "r") as f:
+                data = json.load(f)
+            return data
