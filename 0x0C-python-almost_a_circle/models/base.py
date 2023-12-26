@@ -66,8 +66,4 @@ class Base:
             return []
         with open(filename, "r") as f:
             jsonstr = f.read()
-        jsonlist = Base.from_json_string(jsonstr)
-        for item in jsonlist:
-            instance = cls.create(**item)
-            jsonlist.append(instance)
-        return jsonlist
+        return [cls.create(**item) for item in jsonstr]
