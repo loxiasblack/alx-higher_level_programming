@@ -62,9 +62,16 @@ class Base:
     def load_from_file(cls):
         if cls.__name__ == "Rectangle":
             with open("Rectangle.json", "r") as f:
-                list_data = json.load(f)
-            return list_data
+                raw_data = f.read()
+            data = Base.from_json_string(raw_data)
         if cls.__name__ == "Square":
             with open("Square.json", "r") as f:
-                data = json.load(f)
-            return data
+                raw_data = f.read()
+            data = Base.from_json_string(raw_data)
+        if data is None:
+            return []
+        instances = []
+        for item in data:
+            instance = cls.create(**item)
+            instances.append(instance)
+        return instances
