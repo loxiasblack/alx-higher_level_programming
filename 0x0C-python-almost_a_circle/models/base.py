@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """!.base class module"""
 import json
+import os
 
 
 class Base:
@@ -60,18 +61,11 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        if cls.__name__ == "Rectangle":
-            with open("Rectangle.json", "r") as f:
-                raw_data = f.read()
-            data = Base.from_json_string(raw_data)
-        if cls.__name__ == "Square":
-            with open("Square.json", "r") as f:
-                raw_data = f.read()
-            data = Base.from_json_string(raw_data)
-        instances = []
-        if data is None:
-            return instances
-        for item in data:
-            instance = cls.create(**item)
-            instances.append(instance)
-        return instances
+        filename = cls.__name__ + ".json"
+        jsonstr = ""
+        if not os.path.exists(filename):
+            return []
+        with open(filename, "r") as f:
+            jsonstr = f.read()
+        jsonlist = Base.from_json_string(jsonstr)
+        return ([Base.create(**item) for item in jsonlist])
