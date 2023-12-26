@@ -62,7 +62,6 @@ class Base:
     @classmethod
     def load_from_file(cls):
         filename = cls.__name__ + ".json"
-        jsonstr = ""
         if not os.path.exists(filename):
             return []
         with open(filename, "r") as f:
