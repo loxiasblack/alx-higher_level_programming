@@ -68,9 +68,9 @@ class Base:
             with open("Square.json", "r") as f:
                 raw_data = f.read()
             data = Base.from_json_string(raw_data)
+        instances = []
         if data is None:
             return instances
-        instances = []
         for item in data:
             instance = cls.create(**item)
             instances.append(instance)
