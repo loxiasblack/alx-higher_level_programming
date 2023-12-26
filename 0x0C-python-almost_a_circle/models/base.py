@@ -69,3 +69,4 @@ class Base:
             jsonstr = f.read()
         jsonlist = cls.from_json_string(jsonstr)
         return [cls.create(**item) for item in jsonlist]
+    
