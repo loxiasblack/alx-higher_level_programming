@@ -69,7 +69,7 @@ class Base:
                 raw_data = f.read()
             data = Base.from_json_string(raw_data)
         if data is None:
-            return []
+            return instances
         instances = []
         for item in data:
             instance = cls.create(**item)
