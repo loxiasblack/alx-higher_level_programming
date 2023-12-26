@@ -62,8 +62,10 @@ class Base:
     @classmethod
     def load_from_file(cls):
         filename = cls.__name__ + ".json"
+        jsonstr = ""
         if not os.path.exists(filename):
             return []
         with open(filename, "r") as f:
             jsonstr = f.read()
-        return [cls.create(**item) for item in jsonstr]
+        jsonlist = cls.from_json_string(jsonstr)
+        return [cls.create(**item) for item in jsonlist]

@@ -1,22 +1,41 @@
 #!/usr/bin/python3
-""" Check """
+""" 18-main """
 from models.rectangle import Rectangle
-import os
-import json
+from models.square import Square
 
+if __name__ == "__main__":
 
-file_path = "Rectangle.json"
-if os.path.exists(file_path):
-    os.remove(file_path)
+    r1 = Rectangle(10, 7, 2, 8)
+    r2 = Rectangle(2, 4)
+    list_rectangles_input = [r1, r2]
 
-res = Rectangle.load_from_file()
+    Rectangle.save_to_file(list_rectangles_input)
 
-if res is None:
-    print("load_from_file doesn't return an empty list when the file doesn't exist")
-    exit(1)
+    list_rectangles_output = Rectangle.load_from_file()
 
-if len(res) != 0:
-    print("load_from_file doesn't return an empty list when the file doesn't exist")
-    exit(1)
+    for rect in list_rectangles_input:
+        print("[{}] {}".format(id(rect), rect))
 
-print("OK", end="")
+    print("---")
+
+    for rect in list_rectangles_output:
+        print("[{}] {}".format(id(rect), rect))
+
+    print("---")
+    print("---")
+
+    s1 = Square(5)
+    s2 = Square(7, 9, 1)
+    list_squares_input = [s1, s2]
+
+    Square.save_to_file(list_squares_input)
+
+    list_squares_output = Square.load_from_file()
+
+    for square in list_squares_input:
+        print("[{}] {}".format(id(square), square))
+
+    print("---")
+
+    for square in list_squares_output:
+        print("[{}] {}".format(id(square), square))
