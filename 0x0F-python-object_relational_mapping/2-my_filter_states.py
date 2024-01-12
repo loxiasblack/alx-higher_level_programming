@@ -14,8 +14,7 @@ if __name__ == "__main__":
     )
     searchname = sys.argv[4]
     cursor = db.cursor()
-    query = "SELECT * FROM states WHERE name = %s"
-    cursor.execute(query, (searchname,))
+    cursor.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC", (searchname,))
     for name in cursor.fetchall():
         print(name)
     cursor.close()
