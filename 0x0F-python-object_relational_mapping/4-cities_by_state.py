@@ -14,7 +14,9 @@ if __name__ == "__main__":
     )
 
     cursor = db.cursor()
-    cursor.execute("SELECT DISTINCT cities.id, cities.name, states.name  FROM cities, states ORDER BY cities.id ASC")
+    cursor.execute("SELECT cities.id, cities.name, states.name FROM cities\
+                    INNER JOIN states ON cities.state_id = states.id\
+                    ORDER BY cities.id ASC")
     for city in cursor.fetchall():
         print(city)
     cursor.close()
