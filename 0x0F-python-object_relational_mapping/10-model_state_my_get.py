@@ -13,11 +13,9 @@ if __name__ == "__main__":
     session = Session()
 
     state = session.query(
-        State).filter(
-            State.name.contains(
-                sys.argv[4])).first()
+        State).filter_by(name=sys.argv[4]).first()
     if state:
-        print("{}".format(state.id))
+        print(state.id)
     else:
         print("Not found")
 
