@@ -15,9 +15,3 @@ class State(Base):
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True,
                            autoincrement=True, nullable=False)
     name = sqlalchemy.Column(sqlalchemy.String(128), nullable=False)
-
-
-
-
-
-
