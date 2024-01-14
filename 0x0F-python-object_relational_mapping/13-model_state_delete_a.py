@@ -17,6 +17,6 @@ if __name__ == "__main__":
 
     for state in Mysession.query(State).filter(State.name.contains("a")).all():
         Mysession.delete(state)
-        Mysession.commit()
+    Mysession.commit()
 
     Mysession.close()
