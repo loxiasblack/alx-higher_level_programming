@@ -1,3 +1,3 @@
 #!/bin/bash
 # bash script that send delete request passed to the firest argument
-curl -sX "$1"
+curl -sX DELETE "$1"
