@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """!.base class module"""
 import json
+import os
 
 
 class Base:
@@ -40,3 +41,31 @@ class Base:
                                       for inst in list_objs])
         with open(filename, "w") as f:
             f.write(jsonstr)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """creat a dummy instance"""
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+            Base.just_dummy()
+        if cls.__name__ == "Square":
+            dummy = cls(1)
+            Base.just_dummy()
+        dummy.update(**dictionary)
+        return dummy
+
+    @classmethod
+    def just_dummy(cls):
+        """ignore the count"""
+        Base.__nb_objects -= 1
+
+    @classmethod
+    def load_from_file(cls):
+        filename = cls.__name__ + ".json"
+        jsonstr = ""
+        if not os.path.exists(filename):
+            return []
+        with open(filename, "r") as f:
+            jsonstr = f.read()
+        jsonlist = cls.from_json_string(jsonstr)
+        return [cls.create(**item) for item in jsonlist]
