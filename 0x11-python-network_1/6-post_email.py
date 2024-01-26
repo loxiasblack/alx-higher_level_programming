@@ -6,23 +6,5 @@ import sys
 
 
 if __name__ == "__main__":
-    query_param = sys.argv[1]
-    
-    if len(sys.argv) > 1:
-        query_param = sys.argv[1]
-
-    r = requests.post("http://0.0.0.0:5000/search_user", data={'q': sys.argv[1]})
-    text = r.content.decode("utf-8")
-    if not (text.startswith("{") and text.endswith("}\n")):
-        print("Not a valid JSON")
-    parts = text.strip("{'}\n").split(",")
-    if not parts:
-        print("No result")
-    else:
-        data = {}
-        for part in parts:
-            key, value = part.split(":")
-            key = key.strip("'\"")
-            value = value.strip("'\"")
-            data[key] = value
-        print("[{}] {}".format(data["id"], data["name"]))
+    r = requests.post(sys.argv[1], data={'email': sys.argv[2]})
+    print(r.text)

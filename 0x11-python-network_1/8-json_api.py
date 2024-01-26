@@ -27,7 +27,4 @@ if __name__ == "__main__":
                 key = key.strip("'\"")
                 value = value.strip("'\"")
                 data[key] = value
-
-            id_value = data.get("id", " No ID")
-            name_value = data.get("name", "No Name")
-            print("[{id_value}] {name_value}")
+            print("[{}] {}".format(data["id"], data["name"]))
