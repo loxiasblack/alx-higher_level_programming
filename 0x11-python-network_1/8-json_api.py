@@ -6,7 +6,7 @@ import sys
 
 
 if __name__ == "__main__":
-    query_param = sys.argv[1]
+    query_param = ""
     
     if len(sys.argv) > 1:
         query_param = sys.argv[1]
@@ -15,14 +15,15 @@ if __name__ == "__main__":
     text = r.content.decode("utf-8")
     if not (text.startswith("{") and text.endswith("}\n")):
         print("Not a valid JSON")
-    parts = text.strip("{'}\n").split(",")
-    if not parts:
-        print("No result")
     else:
-        data = {}
-        for part in parts:
-            key, value = part.split(":")
-            key = key.strip("'\"")
-            value = value.strip("'\"")
-            data[key] = value
-        print("[{}] {}".format(data["id"], data["name"]))
+        parts = text.strip("{'}\n").split(",")
+        if not parts or len(parts) == 1 and parts[0] == "":
+            print("No result")
+        else:
+            data = {}
+            for part in parts:
+                key, value = part.split(":")
+                key = key.strip("'\"")
+                value = value.strip("'\"")
+                data[key] = value
+            print("[{}] {}".format(data["id"], data["name"]))
