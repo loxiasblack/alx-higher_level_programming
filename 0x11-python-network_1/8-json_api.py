@@ -12,7 +12,7 @@ if __name__ == "__main__":
         query_param = sys.argv[1]
 
     r = requests.post("http://0.0.0.0:5000/search_user",
-                      data={'q': sys.argv[1]})
+                      data={'q': query_param})
     text = r.content.decode("utf-8")
     if not (text.startswith("{") and text.endswith("}\n")):
         print("Not a valid JSON")
