@@ -7,20 +7,18 @@ request.get(process.argv[2], function (error, response, body) {
     console.error(error);
   } else {
     const myDictionary = {};
-    let userId = 1;
     const data = JSON.parse(body);
-    while (userId < 11) {
-      let tasKcounter = 0;
-      for (let index = 0; index < data.length; index++) {
-        for (const item in data[index]) {
-          if (data[index][item] === userId && data[index].completed === true) {
-            tasKcounter++;
-          }
+    data.forEach(item => {
+      // Check if the task is completed
+      if (item.completed) {
+        // If the userId exists in myDictionary, increment, else initialize to 1
+        if (myDictionary[item.userId]) {
+          myDictionary[item.userId]++;
+        } else {
+          myDictionary[item.userId] = 1;
         }
       }
-      myDictionary[String(userId)] = tasKcounter;
-      userId++;
-    }
+    });
     console.log(myDictionary);
   }
 });
