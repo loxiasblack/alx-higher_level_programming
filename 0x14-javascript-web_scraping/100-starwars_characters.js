@@ -17,6 +17,9 @@ request.get(url, function (error, response, body) {
               if (data === 'characters') {
                 for (let item = 0; item < movie[data].length; item++) {
                   request.get(movie[data][item], function (error, response, body) {
+                    if (error) {
+                      console.error(error);
+                    }
                     const core = JSON.parse(body);
                     for (const key in core) {
                       if (key === 'name') {
