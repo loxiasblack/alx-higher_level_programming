@@ -7,7 +7,7 @@ request.get(process.argv[2], function (error, response, body) {
     console.error(error);
   } else {
     const obj = JSON.parse(body).results;
-    let count = 0;
+    let count = 1;
     obj.forEach(element => {
       for (const item in element) {
         if (item === 'characters') {
