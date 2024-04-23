@@ -12,11 +12,11 @@ request.get(url, (error, response, body) => {
     console.error(error);
   }
   const data = JSON.parse(body);
-  const results = data.results;
-  results.forEach(result => {
-    const characters = result.characters;
-    characters.forEach(character => {
-      if (character === characterUrl) {
+  const result = data.results;
+  result.forEach(element => {
+    const character = element.characters;
+    character.forEach(element => {
+      if (characterUrl === element) {
         count++;
       }
     });
