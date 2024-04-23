@@ -6,19 +6,20 @@ const request = require('request');
 request.get(process.argv[2], (error, response, body) => {
   if (error) {
     console.error(error);
-  }
-  const data = JSON.parse(body);
-  let i = 1;
-  const dictionary = {};
-  while (i < 11) {
-    let count = 0;
-    data.forEach(element => {
-      if (element.userId === i && element.completed === true) {
-        count++;
+  } else {
+    const myDictionary = {};
+    const data = JSON.parse(body);
+    data.forEach(item => {
+      // Check if the task is completed
+      if (item.completed) {
+        // If the userId exists in myDictionary, increment, else initialize to 1
+        if (myDictionary[item.userId]) {
+          myDictionary[item.userId]++;
+        } else {
+          myDictionary[item.userId] = 1;
+        }
       }
     });
-    dictionary[i] = count;
-    i++;
+    console.log(myDictionary);
   }
-  console.log(dictionary);
 });
